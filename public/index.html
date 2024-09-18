@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Dibujo por Turnos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="circle xxlarge shade1"></div>
+    <div class="circle xlarge shade2"></div>
+    <div class="circle large shade3"></div>
+    <div class="circle medium shade4"></div>
+    <div class="circle small shade5"></div>
+
+    <div class="container">
+        <h1>Juego de Dibujo por Turnos</h1>
+
+        <div id="lobby">
+            <h2>Lobby</h2>
+            
+            <input type="text" id="playerName" placeholder="Tu nombre" aria-label="Nombre del jugador">
+            
+            <div id="lobbyOptions">
+                <button id="createLobby">Crear Lobby</button>
+                
+                <div id="joinLobbySection">
+                    <input type="text" id="lobbyId" placeholder="ID del Lobby" aria-label="ID del Lobby">
+                    <button id="joinLobby">Unirse al Lobby</button>
+                </div>
+            </div>
+
+            <div id="lobbyInfo" style="display: none;">
+                <h3>Jugadores en el lobby:</h3>
+                <ul id="playerList"></ul>
+                <p id="lobbyIdDisplay"></p>
+            </div>
+
+            <button id="startGame" style="display: none;">Iniciar Juego</button>
+        </div>
+
+        <div id="gameArea" style="display: none;">
+            <div id="roundInfo"></div>
+            <div id="turnInfo">Esperando inicio del juego...</div>
+            
+            <p>Tiempo restante: <span id="timeLeft">30</span> segundos</p>
+            
+            <div id="wordSelectionArea" style="display: none;">
+                <h3>Elige una palabra para dibujar:</h3>
+                <div id="wordOptions"></div>
+            </div>
+
+            <div id="floatingWord" class="floating-word"></div>
+
+            <div class="game-layout">
+                <div class="drawing-area">
+                    <div>
+                        <label for="colorPicker">Color:</label>
+                        <input type="color" id="colorPicker" value="#000000" aria-label="Seleccionar color">
+                        <label for="brushSize">Tamaño del pincel:</label>
+                        <input type="range" id="brushSize" min="1" max="20" value="5" aria-label="Tamaño del pincel">
+                        <button id="clearCanvas">Borrar Todo</button>
+                    </div>
+                    
+                    <canvas id="drawingCanvas" aria-label="Área de dibujo"></canvas>
+                    
+                    <button id="endTurn">Terminar Turno</button>
+                </div>
+
+                <div class="chat-area">
+                    <div id="chat" aria-live="polite"></div>
+                    <input type="text" id="chatInput" placeholder="Escribe un mensaje..." aria-label="Mensaje de chat">
+                    <button id="sendMessage">Enviar</button>
+                </div>
+
+                <div class="scores-area">
+                    <h3>Puntajes</h3>
+                    <ul id="scoresList"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
