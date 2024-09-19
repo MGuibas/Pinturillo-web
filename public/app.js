@@ -77,13 +77,11 @@ joinLobbyButton.addEventListener('click', () => {
 socket.on('lobbyCreated', ({ lobbyId, players, admin }) => {
   currentLobbyId = lobbyId;
   updateLobbyUI(players, admin);
-  alert(`Lobby creado. ID: ${lobbyId}`);
 });
 
 socket.on('lobbyJoined', ({ lobbyId, players, admin }) => {
   currentLobbyId = lobbyId;
   updateLobbyUI(players, admin);
-  alert(`Te has unido al lobby: ${lobbyId}`);
 });
 
 socket.on('lobbyUpdate', ({ lobbyId, players, admin }) => {
@@ -127,7 +125,8 @@ socket.on('wordSelected', ({ drawer, word }) => {
     currentWordDisplay.textContent = word;
   } else {
     turnInfo.textContent = "¡Adivina la palabra!";
-    currentWordDisplay.textContent = "_ ".repeat(word.length);
+    const hiddenWord = word.split('').map(letter => letter === ' ' ? ' ' : '_').join(' ');
+    currentWordDisplay.textContent = hiddenWord;
   }
 });
 
@@ -251,7 +250,7 @@ socket.on('newTurn', (data) => {
     startTimer();
   } else {
     stopTimer();
-    startTimer();
+    timeLeft = 60;
   }
 });
 
@@ -311,6 +310,7 @@ endTurnButton.addEventListener('click', endTurn);
 
 function endTurn() {
   if (myTurn && currentLobbyId) {
+    showCompleteDrawing()
     socket.emit('endTurn', currentLobbyId);
     myTurn = false;
   }

@@ -1,24 +1,54 @@
 {
-    "words": [
-      "perro",
-      "gato",
-      "casa",
-      "árbol",
-      "coche",
-      "sol",
-      "luna",
-      "estrella",
-      "flor",
-      "pájaro",
-      "pez",
-      "montaña",
-      "río",
-      "playa",
-      "libro",
-      "teléfono",
-      "computadora",
-      "pelota",
-      "guitarra",
-      "reloj"
-    ]
-  }
+  "words": [
+    "perro", "gato", "casa", "árbol", "coche", "sol", "luna", "estrella", "flor", "pájaro",
+    "pez", "montaña", "río", "playa", "libro", "teléfono", "computadora", "pelota", "guitarra", "reloj",
+    "avión", "bicicleta", "tren", "barco", "puente", "paraguas", "zapato", "sombrero", "camisa", "pantalón",
+    "ciudad", "paisaje", "caramelo", "espada", "dragón", "fantasma", "nieve", "tiburón", "volcán", "castillo",
+    "león", "caballo", "mariposa", "delfín", "cohete", "moto", "helicóptero", "carroza", "sirena", "vampiro",
+    "bruja", "robot", "piedra", "lago", "nube", "avispón", "tren", "policía", "batería", "bici", "mapa",
+    "diamante", "circo", "tenedor", "lápiz", "astronauta", "elefante", "jirafa", "tigre", "planeta", "robot",
+    "cofre", "pirata", "globo", "nave", "espiral", "cuadrado", "triángulo", "estrella fugaz", "camión", "camino",
+    "torre", "bola de cristal", "bufanda", "colina", "calle", "estadio", "auriculares", "piano", "violín", "espejo",
+
+    "mesa", "silla", "ventana", "puerta", "granja", "tractor", "maíz", "grano", "tractor", "cementerio",
+    "zombi", "alienígena", "platillo", "espacio", "marciano", "gafas", "luz", "sombrero de copa", "camaleón", "ninja",
+    "samurái", "soldado", "espuma", "espada láser", "pegaso", "unicornio", "hielo", "araña", "vampiro", "momia",
+    "zorro", "águila", "ballena", "glaciar", "montaña rusa", "hechizo", "mago", "castillo encantado", "fantasma", "murciélago",
+
+    "foca", "leopardo", "guitarrista", "flauta", "trompeta", "micrófono", "altavoz", "torre Eiffel", "pirámide", "arena",
+    "desierto", "selva", "pingüino", "mamífero", "sabana", "lobo", "estrella de mar", "capitán", "flotador", "lago",
+
+    "televisión", "control remoto", "ratón", "teclado", "monitor", "altavoz", "webcam", "smartphone", "impresora", "cable",
+    "microondas", "horno", "nevera", "licuadora", "batidora", "cafetera", "ventilador", "lámpara", "bombilla", "lavadora",
+    
+    "música", "película", "póster", "videojuego", "personaje", "villano", "superhéroe", "mapa", "nivel", "consola",
+    "control", "coche de carreras", "avión de combate", "camión monstruo", "robot gigante", "dinero", "billete", "tarjeta de crédito", "cajero", "banquero",
+    
+    "escalera", "pared", "alfombra", "cuadro", "reloj de pared", "sofá", "cama", "almohada", "cobija", "colchón",
+    "libreta", "cuaderno", "tijeras", "pegamento", "calculadora", "regla", "pizarra", "borrador", "marcador", "papelera",
+
+    "mesa de picnic", "linterna", "mapa del tesoro", "brújula", "pico", "pala", "grúa", "carretilla", "retroexcavadora", "camión de basura",
+    "lobo marino", "morsa", "castor", "cometa", "globo aerostático", "aeropuerto", "taxi", "semáforo", "avión de papel", "aeromodelo",
+    
+    "grifo", "agua", "hilo", "aguja", "pegamento", "cera", "fruta", "sandía", "manzana", "plátano", "naranja",
+    "leche", "queso", "huevo", "pan", "mantequilla", "miel", "aceite", "vinagre", "azúcar", "sal",
+
+    "florero", "planta", "tierra", "arena", "montaña nevada", "glaciar", "caverna", "cueva", "tesoro", "traje de baño",
+    "medusa", "erizo de mar", "tiburón martillo", "orca", "ballena jorobada", "molusco", "cangrejo ermitaño", "anguila", "pecera", "pez dorado",
+
+    "orquesta", "director", "batuta", "partitura", "ballet", "baile", "coreografía", "música clásica", "compositor", "teclado eléctrico",
+    "sintetizador", "guitarra eléctrica", "bajo", "batería", "violonchelo", "contrabajo", "flauta traversa", "clarinete", "saxofón", "trombón",
+
+    "medalla", "trofeo", "corona", "cetro", "reina", "rey", "príncipe", "princesa", "duque", "duquesa",
+    "rey mago", "paje", "soldado de plomo", "muñeco de nieve", "hombre de jengibre", "santa", "elfo", "reno", "camello", "estrella polar",
+
+    "papel higiénico", "tubo de pasta", "cepillo", "toalla", "esponja", "champú", "acondicionador", "jabón", "gel", "crema",
+    "maquinilla", "cuchilla", "dientes", "sonrisa", "corte de pelo", "peine", "tijeras de peluquero", "laca", "gel de peinado", "cepillo de dientes",
+
+    "buceo", "surf", "snowboard", "parapente", "ala delta", "paracaidismo", "senderismo", "escalada", "rapel", "puenting",
+    "montar a caballo", "bicicleta de montaña", "patinaje sobre hielo", "hockey", "ski", "moto de nieve", "patines", "esgrima", "karate", "judo",
+
+    "sushi", "pizza", "hamburguesa", "papas fritas", "ensalada", "sándwich", "taco", "burrito", "pastel", "galleta",
+    "helado", "dulce", "donuts", "croissant", "panqueque", "tarta", "gelatina", "yogur", "muffin", "cupcake"
+  ]
+}

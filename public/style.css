@@ -1,4 +1,3 @@
-/* Estilos base */
 * {
   margin: 0;
   padding: 0;
@@ -15,15 +14,37 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #171717;
-  color: #fff;
+  color: #000000;
   line-height: 1.6;
   position: relative;
-  font-family: "Inter", sans-serif;
+  font-family: "Exo", sans-serif;
   overflow: hidden;
+  
+  /* Background scrolling animation */
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0;
+  -webkit-animation: bg-scrolling-reverse .92s infinite linear;
+  -moz-animation: bg-scrolling-reverse .92s infinite linear;
+  -o-animation: bg-scrolling-reverse .92s infinite linear;
+  animation: bg-scrolling-reverse .92s infinite linear;
 }
 
-/* Animación del título */
+@-webkit-keyframes bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+@-moz-keyframes bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+@-o-keyframes bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+@keyframes bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+
+/* Infinite title animation */
+
+
+/* Rest of your styles */
 .text-box {
   position: relative;
   display: flex;
@@ -34,22 +55,22 @@ body {
 h1 {
   font-size: 8vw;
   font-weight: 900;
-  background-color: #000;
-  color: #fff;
+  background-color: #ff000000;
+  color: #000000;
   display: block;
   padding: .5em;
 }
 
 h1:nth-child(2) {
   position: absolute;
-  background-color: #fff;
-  color: #000;
+  background-color: #cdcdcd00;
+  color: #ffffffdd;
   clip-path: inset(-1% -1% 50% -1%);
 }
 
 /* Estilos del contenedor principal */
 .container {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.53);
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   padding: 20px;
@@ -136,8 +157,8 @@ input[type="text"], input[type="color"], input[type="range"] {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid #3399ff;
   border-radius: 5px;
-  color: #fff;
-  padding: 5px;
+  color: #000000;
+  padding: 12px;
 }
 
 /* Estilos para el área de selección de palabras */
