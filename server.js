@@ -12,8 +12,8 @@ const io = socketIo(server);
 let lobbies = {};
 const words = JSON.parse(fs.readFileSync('words.json', 'utf8')).words;
 
-const TURN_DURATION = 30000; // 30 segundos
-const WORD_SELECTION_TIME = 10000; // 10 segundos
+const TURN_DURATION = 60000; // 60 segundos
+const WORD_SELECTION_TIME = 100; // 10 segundos
 const ROUNDS_PER_GAME = 5;
 const ROUND_BREAK_TIME = 5000; // 5 segundos de descanso entre rondas
 

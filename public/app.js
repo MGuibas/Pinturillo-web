@@ -4,7 +4,7 @@ let myTurn = false;
 let color = '#000000';
 let brushSize = 5;
 let playerName = "";
-let timeLeft = 30;
+let timeLeft;
 let timerInterval;
 let isAdmin = false;
 let currentLobbyId = null;
@@ -13,6 +13,7 @@ let currentRound = 0;
 let currentWord = '';
 let currentDrawer = '';
 
+const currentWordDisplay = document.getElementById('currentWord');
 let drawingBuffer = [];
 let lastSentTime = 0;
 const SEND_INTERVAL = 25; //intervalos dibujos
@@ -113,29 +114,27 @@ startGameButton.addEventListener('click', () => {
 });
 
 socket.on('gameStart', ({ round }) => {
-  lobby.style.display = 'none';
-  gameArea.style.display = 'block';
+  showGame();
   currentRound = round;
   updateRoundInfo();
   resizeCanvas();
 });
 
-socket.on('selectWord', ({ words }) => {
-  wordSelectionArea.style.display = 'block';
-  wordOptions.innerHTML = '';
-  words.forEach(word => {
-    const button = document.createElement('button');
-    button.textContent = word;
-    button.addEventListener('click', () => selectWord(word));
-    wordOptions.appendChild(button);
-  });
-  startWordSelectionTimer();
+socket.on('wordSelected', ({ drawer, word }) => {
+  wordSelectionArea.style.display = 'none';
+  if (socket.id === drawer) {
+    turnInfo.textContent = "¡Es tu turno para dibujar!";
+    currentWordDisplay.textContent = word;
+  } else {
+    turnInfo.textContent = "¡Adivina la palabra!";
+    currentWordDisplay.textContent = "_ ".repeat(word.length);
+  }
 });
 
 function selectWord(word) {
   socket.emit('selectWord', { lobbyId: currentLobbyId, word });
   wordSelectionArea.style.display = 'none';
-  showFloatingWord(word);
+  currentWordDisplay.textContent = word;
 }
 
 function showFloatingWord(word) {
@@ -147,16 +146,7 @@ function showFloatingWord(word) {
   }, 3000);
 }
 
-// Modificar la función que maneja el evento 'wordSelected'
-socket.on('wordSelected', ({ drawer }) => {
-  wordSelectionArea.style.display = 'none';
-  if (socket.id === drawer) {
-    turnInfo.textContent = "¡Es tu turno para dibujar!";
-    showFloatingWord(currentWord);
-  } else {
-    turnInfo.textContent = "¡Adivina la palabra!";
-  }
-});
+
 
 document.getElementById('clearCanvas').addEventListener('click', () => {
   if (myTurn) {
@@ -187,13 +177,14 @@ function startDrawing(event) {
   drawing = true;
   [lastX, lastY] = [event.offsetX, event.offsetY];
 }
+let lastDrawnPoint = null;
+
 
 function draw(event) {
   if (!drawing || !myTurn) return;
   const currentPoint = { x: event.offsetX, y: event.offsetY };
-  drawingBuffer.push(currentPoint);
   
-  // Dibujar en el canvas oculto en lugar del visible
+  // Dibujar en el canvas oculto
   hiddenCtx.beginPath();
   hiddenCtx.moveTo(lastX, lastY);
   hiddenCtx.lineTo(currentPoint.x, currentPoint.y);
@@ -202,6 +193,20 @@ function draw(event) {
   hiddenCtx.lineCap = 'round';
   hiddenCtx.stroke();
   
+  // Mostrar brevemente en el canvas visible
+  ctx.beginPath();
+  ctx.moveTo(lastX, lastY);
+  ctx.lineTo(currentPoint.x, currentPoint.y);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = brushSize;
+  ctx.lineCap = 'round';
+  ctx.stroke();
+  
+  setTimeout(() => {
+    ctx.clearRect(currentPoint.x - brushSize, currentPoint.y - brushSize, brushSize * 2, brushSize * 2);
+  }, 100);
+
+  drawingBuffer.push(currentPoint);
   [lastX, lastY] = [currentPoint.x, currentPoint.y];
   
   const now = Date.now();
@@ -242,10 +247,11 @@ socket.on('newTurn', (data) => {
   chatInput.disabled = myTurn;
 
   if (myTurn) {
-    startTimer();
     clearCanvas();
+    startTimer();
   } else {
     stopTimer();
+    startTimer();
   }
 });
 
@@ -270,15 +276,26 @@ socket.on('drawing', (data) => {
 });
 
 function startTimer() {
-  timeLeft = 30;
+  timeLeft = 60;
   updateTimerDisplay();
   timerInterval = setInterval(() => {
     timeLeft--;
     updateTimerDisplay();
     if (timeLeft <= 0) {
       endTurn();
+    } else if (timeLeft === 2) {
+      showCompleteDrawing();
     }
   }, 1000);
+}
+
+function showCompleteDrawing() {
+  if (myTurn) {
+    ctx.drawImage(hiddenCanvas, 0, 0);
+    setTimeout(() => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }, 2000);
+  }
 }
 
 function stopTimer() {
@@ -287,11 +304,7 @@ function stopTimer() {
 
 function updateTimerDisplay() {
   timerDisplay.textContent = timeLeft;
-  if (timeLeft <= 10) {
-    timerDisplay.style.color = '#e74c3c';
-  } else {
-    timerDisplay.style.color = '#333';
-  }
+  timerDisplay.style.color = '#ff0000';
 }
 
 endTurnButton.addEventListener('click', endTurn);
@@ -425,8 +438,7 @@ socket.on('gameEnded', ({ scores, winner }) => {
   
   document.getElementById('backToLobby').addEventListener('click', () => {
     document.body.removeChild(overlay);
-    gameArea.style.display = 'none';
-    lobby.style.display = 'block';
+    showLobby();
   });
 
   updateScores(scores);
@@ -473,4 +485,36 @@ function startWordSelectionTimer() {
       wordSelectionArea.style.display = 'none';
     }
   }, 1000);
+}
+const linesContainer = document.createElement('div');
+linesContainer.className = 'lines';
+for (let i = 0; i < 3; i++) {
+  const line = document.createElement('div');
+  line.className = 'line';
+  linesContainer.appendChild(line);
+}
+document.body.insertBefore(linesContainer, document.body.firstChild);
+
+// Añade estas funciones al final de tu archivo app.js
+
+function showLobby() {
+  document.getElementById('lobby').classList.add('fade-enter-active');
+  document.getElementById('gameArea').classList.add('fade-leave-active');
+  setTimeout(() => {
+    document.getElementById('lobby').style.display = 'block';
+    document.getElementById('gameArea').style.display = 'none';
+    document.getElementById('lobby').classList.remove('fade-enter-active');
+    document.getElementById('gameArea').classList.remove('fade-leave-active');
+  }, 500);
+}
+
+function showGame() {
+  document.getElementById('gameArea').classList.add('fade-enter-active');
+  document.getElementById('lobby').classList.add('fade-leave-active');
+  setTimeout(() => {
+    document.getElementById('gameArea').style.display = 'block';
+    document.getElementById('lobby').style.display = 'none';
+    document.getElementById('gameArea').classList.remove('fade-enter-active');
+    document.getElementById('lobby').classList.remove('fade-leave-active');
+  }, 500);
 }

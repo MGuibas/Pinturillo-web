@@ -1,405 +1,240 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+/* Estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+}
 
-:root {
-  --primary-color: #ffffff;
-  --secondary-color: #e0e0e0;
-  --background-color: #3399ff;
-  --text-color: #333333;
-  --accent-color: #ff9933;
-  --canvas-bg-color: #ffffff;
+html, body {
+  height: 100%;
 }
 
 body {
-  font-family: 'Lato', sans-serif;
-  background-color: var(--background-color);
-  margin: 0;
-  padding: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  color: var(--text-color);
-  overflow-x: hidden;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #171717;
+  color: #fff;
+  line-height: 1.6;
   position: relative;
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
 }
 
-.container {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  max-width: 1200px;
-  width: 95%;
-  transition: all 0.3s ease;
+/* Animación del título */
+.text-box {
   position: relative;
-  z-index: 1;
-}
-
-.game-layout {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.drawing-area {
-  flex: 1;
-  min-width: 300px;
-}
-
-.chat-area {
-  width: 300px;
-}
-
-h1, h2 {
-  color: var(--text-color);
-  text-align: center;
-  margin-bottom: 20px;
-  letter-spacing: 3px;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
-  font-size: 2.5em;
-  font-weight: 700;
+  font-size: 8vw;
+  font-weight: 900;
+  background-color: #000;
+  color: #fff;
+  display: block;
+  padding: .5em;
 }
 
-h2 {
-  font-size: 1.8em;
-  font-weight: 400;
+h1:nth-child(2) {
+  position: absolute;
+  background-color: #fff;
+  color: #000;
+  clip-path: inset(-1% -1% 50% -1%);
 }
 
-input[type="text"], input[type="color"], input[type="range"] {
-  margin: 10px 0;
-  padding: 10px;
+/* Estilos del contenedor principal */
+.container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-width: 1200px;
+  width: 95%;
+  margin: 20px auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos para el área de juego */
+.game-layout {
+  display: flex;
   width: 100%;
-  max-width: 300px;
-  border: 2px solid var(--primary-color);
-  border-radius: 5px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  background-color: var(--canvas-bg-color);
-  color: var(--text-color);
+  gap: 20px;
 }
 
-input[type="text"]:focus, input[type="color"]:focus, input[type="range"]:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.3);
-}
-
-button {
-  background-color: var(--background-color);
-  border: none;
-  color: var(--primary-color);
-  padding: 12px 24px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-  font-weight: 600;
-}
-
-button:hover {
-  background-color: #2288ee;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-button:disabled {
-  background-color: #cccccc;
-  color: #666666;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+/* Estilos para el área de dibujo */
+.drawing-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #drawingCanvas {
-  border: 3px solid var(--background-color);
+  background-color: #fff;
+  border: 2px solid #3399ff;
   border-radius: 10px;
   cursor: crosshair;
-  transition: all 0.3s ease;
-  background-color: var(--canvas-bg-color);
 }
 
-#drawingCanvas:hover {
-  box-shadow: 0 0 15px rgba(51, 153, 255, 0.5);
-}
-
-#turnInfo {
-  font-size: 20px;
-  margin: 15px 0;
-  font-weight: 600;
-  color: var(--text-color);
-  text-align: center;
-  transition: all 0.3s ease;
+/* Estilos para el chat y los puntajes */
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 #chat {
-  border: 2px solid var(--background-color);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
   height: 300px;
-  overflow-y: scroll;
-  padding: 15px;
+  overflow-y: auto;
+}
+
+#scoresList {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px;
   margin-top: 20px;
-  width: 90%;
-  transition: all 0.3s ease;
-  background-color: var(--canvas-bg-color);
 }
 
-#chat:hover {
-  box-shadow: 0 0 10px rgba(51, 153, 255, 0.3);
+/* Estilos para botones 3D */
+button {
+  background-color: #3399ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 5px 0 #2980b9;
+  position: relative;
+  top: 0;
 }
 
-#timeLeft {
+button:hover {
+  background-color: #2980b9;
+}
+
+button:active {
+  top: 5px;
+  box-shadow: 0 0 0 #2980b9;
+}
+
+/* Estilos para inputs */
+input[type="text"], input[type="color"], input[type="range"] {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #3399ff;
+  border-radius: 5px;
+  color: #fff;
+  padding: 5px;
+}
+
+/* Estilos para el área de selección de palabras */
+#wordSelectionArea {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+#wordOptions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Estilos para la palabra actual */
+#currentWord {
   font-size: 24px;
   font-weight: bold;
-  color: var(--accent-color);
-  transition: all 0.3s ease;
-}
-
-#colorPicker {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-#colorPicker::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-
-#colorPicker::-webkit-color-swatch {
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--background-color);
-}
-
-#brushSize {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 15px;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  transition: opacity .2s;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
 }
 
-#brushSize:hover {
-  opacity: 1;
+/* Estilos para el timer */
+#timeLeft {
+  color: #ff0000;
+  font-weight: bold;
 }
 
-#brushSize::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: var(--background-color);
-  cursor: pointer;
+/* Estilos para las notificaciones */
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 2000;
 }
 
-#brushSize::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: var(--background-color);
-  cursor: pointer;
-}
-
-/* Ripple effect */
-.circle {
-  position: fixed;
-  border-radius: 50%;
-  background: white;
-  animation: ripple 15s infinite;
-  box-shadow: 0px 0px 1px 0px #508fb9;
-}
-
-.small {
-  width: 200px;
-  height: 200px;
-  left: -100px;
-  bottom: -100px;
-}
-
-.medium {
-  width: 400px;
-  height: 400px;
-  left: -200px;
-  bottom: -200px;
-}
-
-.large {
-  width: 600px;
-  height: 600px;
-  left: -300px;
-  bottom: -300px;
-}
-
-.xlarge {
-  width: 800px;
-  height: 800px;
-  left: -400px;
-  bottom: -400px;
-}
-
-.xxlarge {
-  width: 1000px;
-  height: 1000px;
-  left: -500px;
-  bottom: -500px;
-}
-
-.shade1 {
-  opacity: 0.2;
-}
-.shade2 {
-  opacity: 0.5;
-}
-.shade3 {
-  opacity: 0.7;
-}
-.shade4 {
-  opacity: 0.8;
-}
-.shade5 {
-  opacity: 0.9;
-}
-
-@keyframes ripple {
-  0% {
-    transform: scale(0.8);
-  }
-  
-  50% {
-    transform: scale(1.2);
-  }
-  
-  100% {
-    transform: scale(0.8);
-  }
-}
-
+/* Estilos responsivos */
 @media (max-width: 768px) {
   .game-layout {
     flex-direction: column;
   }
 
-  .chat-area {
+  .drawing-area, .chat-area {
     width: 100%;
   }
 }
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .circle {
-    animation: none;
-  }
+/* Animaciones entre menús */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
-/* Añadir estos estilos al final del archivo CSS existente */
-
-#wordSelectionArea {
-  margin-bottom: 20px;
+/* Estilos para los botones de blanco y negro */
+#whiteButton, #blackButton {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
 }
 
-#wordOptions {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
+#blackButton {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
 }
 
-#wordOptions button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: var(--primary-color);
-  color: var(--background-color);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#wordOptions button:hover {
-  background-color: var(--secondary-color);
-}
-
-#roundInfo {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-/* Añadir estos estilos al final del archivo CSS existente */
-
-.floating-word {
-  display: none;
-  position: fixed;
-  top: 50%;
+/* Estilos para el ganador de la ronda */
+#roundWinner {
+  position: absolute;
+  top: 10px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  font-size: 24px;
-  z-index: 1000;
-}
-
-#clearCanvas {
-  margin-left: 10px;
-  padding: 5px 10px;
-  background-color: #f44336;
-  color: white;
-  border: none;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+  padding: 10px;
   border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#clearCanvas:hover {
-  background-color: #d32f2f;
-}
-
-#clearCanvas:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.game-layout {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 20px;
-}
-
-.drawing-area {
-  grid-column: 1 / 2;
-}
-
-.chat-area {
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
-}
-
-.scores-area {
-  grid-column: 1 / 2;
-}
-
-@media (max-width: 768px) {
-  .game-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .chat-area, .scores-area {
-    grid-column: 1 / 2;
-  }
+  z-index: 1000;
 }
