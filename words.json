@@ -27,28 +27,26 @@
     "escalera", "pared", "alfombra", "cuadro", "reloj de pared", "sofá", "cama", "almohada", "cobija", "colchón",
     "libreta", "cuaderno", "tijeras", "pegamento", "calculadora", "regla", "pizarra", "borrador", "marcador", "papelera",
 
-    "mesa de picnic", "linterna", "mapa del tesoro", "brújula", "pico", "pala", "grúa", "carretilla", "retroexcavadora", "camión de basura",
-    "lobo marino", "morsa", "castor", "cometa", "globo aerostático", "aeropuerto", "taxi", "semáforo", "avión de papel", "aeromodelo",
+    "mesa de picnic", "linterna", "mapa del tesoro", "brújula", "pico", "pala", "grúa", "carretilla", "excavadora", "camión de basura",
+    "morsa", "castor", "cometa", "globo aerostático", "aeropuerto", "taxi", "semáforo", "avión de papel",
     
     "grifo", "agua", "hilo", "aguja", "pegamento", "cera", "fruta", "sandía", "manzana", "plátano", "naranja",
     "leche", "queso", "huevo", "pan", "mantequilla", "miel", "aceite", "vinagre", "azúcar", "sal",
 
-    "florero", "planta", "tierra", "arena", "montaña nevada", "glaciar", "caverna", "cueva", "tesoro", "traje de baño",
-    "medusa", "erizo de mar", "tiburón martillo", "orca", "ballena jorobada", "molusco", "cangrejo ermitaño", "anguila", "pecera", "pez dorado",
+    "florero", "planta", "tierra", "arena", "montaña nevada", "cueva", "tesoro", "traje de baño",
+    "medusa", "erizo de mar", "tiburón", "orca", "ballena ", "molusco", "cangrejo", "anguila", "pecera", "pez dorado",
 
-    "orquesta", "director", "batuta", "partitura", "ballet", "baile", "coreografía", "música clásica", "compositor", "teclado eléctrico",
-    "sintetizador", "guitarra eléctrica", "bajo", "batería", "violonchelo", "contrabajo", "flauta traversa", "clarinete", "saxofón", "trombón",
+    "orquesta", "partitura", "ballet", "baile", "guitarra eléctrica","batería", "saxofón",
 
-    "medalla", "trofeo", "corona", "cetro", "reina", "rey", "príncipe", "princesa", "duque", "duquesa",
-    "rey mago", "paje", "soldado de plomo", "muñeco de nieve", "hombre de jengibre", "santa", "elfo", "reno", "camello", "estrella polar",
+    "medalla", "trofeo", "corona", "cetro", "reina", "rey",
 
-    "papel higiénico", "tubo de pasta", "cepillo", "toalla", "esponja", "champú", "acondicionador", "jabón", "gel", "crema",
-    "maquinilla", "cuchilla", "dientes", "sonrisa", "corte de pelo", "peine", "tijeras de peluquero", "laca", "gel de peinado", "cepillo de dientes",
+    "papel higiénico", "cepillo", "toalla", "esponja", "champú", "acondicionador", "jabón", "gel", "crema",
+    "maquinilla", "cuchilla", "dientes", "sonrisa", "corte de pelo", "peine", "tijeras", "cepillo de dientes",
 
     "buceo", "surf", "snowboard", "parapente", "ala delta", "paracaidismo", "senderismo", "escalada", "rapel", "puenting",
-    "montar a caballo", "bicicleta de montaña", "patinaje sobre hielo", "hockey", "ski", "moto de nieve", "patines", "esgrima", "karate", "judo",
+    "montar a caballo", "patinaje sobre hielo", "ski", "moto de nieve", "patines", "esgrima", "karate", "judo",
 
-    "sushi", "pizza", "hamburguesa", "papas fritas", "ensalada", "sándwich", "taco", "burrito", "pastel", "galleta",
-    "helado", "dulce", "donuts", "croissant", "panqueque", "tarta", "gelatina", "yogur", "muffin", "cupcake"
+    "sushi", "pizza", "hamburguesa", "patatas fritas", "ensalada", "sándwich", "taco", "burrito", "pastel", "galleta",
+    "helado", "dulce", "donuts", "croissant", "tarta", "gelatina", "yogur"
   ]
 }

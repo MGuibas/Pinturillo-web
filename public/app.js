@@ -125,7 +125,7 @@ socket.on('wordSelected', ({ drawer, word }) => {
     currentWordDisplay.textContent = word;
   } else {
     turnInfo.textContent = "¡Adivina la palabra!";
-    const hiddenWord = word.split('').map(letter => letter === ' ' ? ' ' : '_').join(' ');
+    const hiddenWord = word.split('').map(letter => letter === ' ' ? '  .  ' : '_').join(' ');
     currentWordDisplay.textContent = hiddenWord;
   }
 });
